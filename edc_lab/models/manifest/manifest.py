@@ -33,6 +33,10 @@ class Manifest(ManifestModelMixin, SearchSlugModelMixin, BaseUuidModel):
         verbose_name='Shipper/Exporter',
         on_delete=PROTECT)
 
+    manifest_on_database = models.BooleanField(
+        default=False,
+        help_text='Flagged if electronic manifest exists')
+
     objects = Manager()
 
     history = HistoricalRecords()
