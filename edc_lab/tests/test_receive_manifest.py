@@ -6,7 +6,7 @@ from ..receive import ReceiveAliquot
 from ..models import Consignee, Shipper
 
 
-class TestReceive(TestCase):
+class TestReceiveManifest(TestCase):
 
     def setUp(self):
         self.shipper = Shipper.objects.create(name='Musanga')
@@ -34,45 +34,6 @@ class TestReceive(TestCase):
         box.boxitem_set.create(identifier='AAAA-EDDD-AAAA',
                                position=1)
         box.save()
-
-#     @tag('1')
-#     def test_aliqout_in_manifest_contents(self):
-#         ManifestHoldingTable.objects.create(
-#             identifier='AAAAA-AAAA')
-#         a = AliquotHoldingTable.objects.create(
-#             identifier='AAAAA-AAAA')
-#         ManifestHoldingTable.objects.create(
-#             identifier='AAAAA-BBBB')
-#         ManifestHoldingTable.objects.create(
-#             identifier='FFPOE-AALL')
-#         self.assertEqual(a.identifier,
-#                          str(ManifestHoldingTable.objects.all().get(
-#                              identifier__exact=a.identifier
-#                          )))
-#
-#     @tag('2')
-#     def test_alliquot_list_equal_manifest_list(self):
-#         AliquotHoldingTable.objects.create(
-#             identifier='AAAAA-AAAA')
-#         ManifestHoldingTable.objects.create(
-#             identifier='AAAAA-AAAA')
-#         self.assertEqual(AliquotHoldingTable.objects.count(),
-#                          ManifestHoldingTable.objects.count())
-#
-#     @tag('3')
-#     def test_aliqout_not_in_manifest_contents(self):
-#         ManifestHoldingTable.objects.create(
-#             identifier='AAAAA-AAAA')
-#         a = AliquotHoldingTable.objects.create(
-#             identifier='VBEEA-BBSS')
-#         ManifestHoldingTable.objects.create(
-#             identifier='AAAAA-BBBB')
-#         ManifestHoldingTable.objects.create(
-#             identifier='FFPOE-AALL')
-#         self.assertNotIn(a.identifier,
-#                          str(ManifestHoldingTable.objects.all().filter(
-#                              identifier=a.identifier
-#                          )))
 
     @tag('9')
     def test_manifest_in_database(self):
