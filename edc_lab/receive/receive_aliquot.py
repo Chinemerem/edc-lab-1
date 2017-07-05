@@ -59,7 +59,8 @@ class ReceiveAliquot:
                 f' in the box items.')
 
     def __repr__(self):
-        return (f'<{self.__class__.__name__}({self.aliquot}, {self.manifest})')
+        return (f'<{self.__class__.__name__}({self.aliquot}, {self.manifest},'
+                f'{self.manifest_item})')
 
     def __str__(self):
         return str(self.aliquot)
