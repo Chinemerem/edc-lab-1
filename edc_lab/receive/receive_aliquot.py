@@ -25,6 +25,18 @@ class ManifestNotOnDatabase(Exception):
     pass
 
 
+class SearchManifest:
+    def __init__(self, manifest_identifier):
+        manifest = None
+        try:
+            manifest = Manifest.objects.get(
+                manifest_identifier=manifest_identifier)
+        except Manifest.DoesNotExist:
+            print(
+                f'Manifest with identifier={self.manifest.manifest_identifier}'
+                ' not on database')
+
+
 class ReceiveAliquot:
 
     def __init__(self, aliquot=None, manifest_item=None,
@@ -33,13 +45,6 @@ class ReceiveAliquot:
         self.manifest_item = manifest_item
         self.manifest = manifest
         query = None
-        try:
-            query = Manifest.objects.get(
-                manifest_identifier=self.manifest.manifest_identifier)
-        except Manifest.DoesNotExist:
-            print(
-                f'Manifest with identifier={self.manifest.manifest_identifier}'
-                ' not on database')
 
         if query:
             self.manifest.manifest_on_database = True
